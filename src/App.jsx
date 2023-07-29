@@ -132,9 +132,9 @@ export default function App() {
         <select className={`${styles.Shape} ${styles.Shape_value}`}
           onChange={(e) => handleShapeChange(e)}>
           {shapeArray.map((s) => {
-            return <option className={`${styles.Shape} ${styles.Shape_value}`} value={s}>{s}</option>
+            return <option key={s} className={`${styles.Shape} ${styles.Shape_value}`} value={s}>{s}</option>
           })}
-          <option className={`${styles.Shape} ${styles.Shape_value}`} value="Random">Random</option>
+          <option key="Random" className={`${styles.Shape} ${styles.Shape_value}`} value="Random">Random</option>
         </select>
       </div>
     </div>
