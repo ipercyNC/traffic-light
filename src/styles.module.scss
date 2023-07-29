@@ -1,0 +1,105 @@
+/*
+  Styles for the traffic light exercise
+  @author Ian Percy <ianpercyor@gmail.com>
+
+  Conventions are a version of BEM
+*/
+* {
+  font-family: sans-serif;
+  color: #666;
+  font-weight: 400;
+}
+
+body {
+  background: linear-gradient(90deg, rgba(2,0,36,0) 0%, rgba(43,218,78,0.28895308123249297) 0%, rgba(0,159,255,0.4009978991596639) 96%);
+  justify-content: center;
+  display: flex;
+  align-items: center;
+}
+
+// Traffic light body
+.Rectangle {
+  width:145px;
+  height:auto;
+  background:black;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+// General button style
+.Button {
+  border-radius: 5px;
+  width: 145px;
+  border: none;
+  box-shadow: 0px 0px 2px 1px rgb(0,0,0);
+  color: white;
+  background-color: #363945;
+  font-size: 16px;
+}
+
+// Hover for the mode button
+.Button_mode:hover {
+  background-color:#0072B5;
+  transition: 0.5s;
+  color:black;
+  font-weight:bold;
+}
+
+// Hover for the change button
+.Button_change:hover {
+  background-color:#009B77;
+  transition: 0.5s;
+  color:black;
+  font-weight:bold;
+}
+
+// Mode block (information about chosen mode)
+.Mode {
+  text-align: center;
+  color: black;
+  font-weight: bold;
+}
+
+// Label for the mode
+.Mode_label {
+  text-decoration: underline;
+  font-size:20px;
+  padding-top:5px;
+
+}
+
+// Value for the mode
+.Mode_value {
+  font-style: oblique;
+  padding-bottom:5px;
+}
+
+// Circle element (traffic light circle)
+.Circle {
+  border-radius: 50%;
+  display: inline-block;
+  padding: 3px;
+  margin: 15px;
+  width: 110px;
+  height: 110px;
+}
+
+// White circle
+.Circle_blank {
+  background: white;
+}
+
+// List for all colors in the light
+// This can be edited to include any order or 
+// number of lights that are desired. If more colors
+// are added, refresh the page for them to appear
+$colors:red,yellow,green;
+@each $color in $colors {
+  .Circle_#{$color} {
+    background: $color;
+  }
+}
+
+:export {
+  colors: $colors;
+}
