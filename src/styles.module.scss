@@ -74,6 +74,28 @@ body {
   padding-bottom:5px;
 }
 
+// Mode block (information about chosen mode)
+.Shape {
+  text-align: center;
+  color: black;
+  font-weight: bold;
+}
+
+// Label for the mode
+.Shape_label {
+  text-decoration: underline;
+  font-size:20px;
+  padding-top:5px;
+
+}
+
+// Value for the mode
+.Shape_value {
+  font-style: oblique;
+  padding-bottom:5px;
+  width: 100%;
+}
+
 // Circle element (traffic light circle)
 .Circle {
   border-radius: 50%;
@@ -89,6 +111,23 @@ body {
   background: white;
 }
 
+//Triangle element (traffic circle triangle)
+.Triangle {
+  display:inline-block;
+  width: 0px;
+  height: 0px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  margin: 15px;
+  border-left: 60px solid transparent;
+  border-right: 60px solid transparent;
+}
+
+//White triangle
+.Triangle_blank {
+  border-bottom: 92px solid white;
+}
+
 // List for all colors in the light
 // This can be edited to include any order or 
 // number of lights that are desired. If more colors
@@ -97,6 +136,9 @@ $colors:red,yellow,green;
 @each $color in $colors {
   .Circle_#{""+ $color} {
     background: $color;
+  }
+  .Triangle_#{"" + $color} {
+    border-bottom: 92px solid $color;
   }
 }
 

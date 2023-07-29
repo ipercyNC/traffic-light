@@ -19,6 +19,9 @@ export default function App() {
   // Store the current selected mode and current color
   const [mode, setMode] = useState("Random");
   const [currentColor, setCurrentColor] = useState(undefined);
+  const [shape, setShape] = useState("Random")
+  const [shapeArray, setShapeArray] = useState(["Circle", "Triangle"])
+
   // Create an array of the color choices from the exported
   // color list of the .scss file. String replace won't work on the input
   // variable of the styles.colors, must store an in-scope copy
@@ -62,23 +65,47 @@ export default function App() {
     }
   }
 
+  /**
+ * Handle changing the shape of traffic lights
+ */
+  function handleShapeChange(e) {
+    // Set the new shape choice
+    setShape(e.target.value);
+
+  }
+
   return (
     <div>
       <div className={`${styles.Rectangle}`}>
         <div onClick={() => handleFetchLight(true)}>
           {colorChoices.map((d, i) => {
+            let shapeString = ''
+            let blankString = ''
+            let colorString = ''
+            if (shape === 'Random'){
+              let localShape = shapeArray[Math.floor(Math.random()*shapeArray.length)]
+              console.log(localShape, localShape)
+              shapeString = styles[`${localShape}`]
+              blankString = styles[`${localShape}_blank`]
+              colorString = styles[`${localShape}_${d}`]
+            } else {
+              shapeString = styles[`${shape}`]
+              blankString = styles[`${shape}_blank`]
+              colorString = styles[`${shape}_${d}`]
+            }
+
             if (d === currentColor) {
               return (
                 <div
                   key={d}
-                  className={`${styles.Circle} ${styles[`Circle_${d}`]}`}
+                  className={`${shapeString} ${colorString}`}
                 />
               );
             } else {
               return (
                 <div
                   key={d}
-                  className={`${styles.Circle} ${styles.Circle_blank}`}
+                  className={`${shapeString} ${blankString}`}
                 />
               );
             }
@@ -101,6 +128,19 @@ export default function App() {
       >
         Change Mode
       </button>
+      <br />
+      <div>
+        <div className={`${styles.Shape} ${styles.Shape_label}`}>
+          Select Shape
+        </div>
+        <select className={`${styles.Shape} ${styles.Shape_value}`}
+          onChange={(e) => handleShapeChange(e)}>
+            {shapeArray.map((s) => {
+              return <option className={`${styles.Shape} ${styles.Shape_value}`} value={s}>{s}</option>
+            })}
+            <option className={`${styles.Shape} ${styles.Shape_value}`} value="Random">Random</option>
+        </select>
+      </div>
     </div>
   );
 }
