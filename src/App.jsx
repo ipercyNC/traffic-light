@@ -82,18 +82,14 @@ export default function App() {
             let shapeString = ''
             let blankString = ''
             let colorString = ''
-            if (shape === 'Random'){
-              let localShape = shapeArray[Math.floor(Math.random()*shapeArray.length)]
-              console.log(localShape, localShape)
-              shapeString = styles[`${localShape}`]
-              blankString = styles[`${localShape}_blank`]
-              colorString = styles[`${localShape}_${d}`]
-            } else {
-              shapeString = styles[`${shape}`]
-              blankString = styles[`${shape}_blank`]
-              colorString = styles[`${shape}_${d}`]
+            let localShape = shape
+            if (shape === 'Random') {
+              localShape = shapeArray[Math.floor(Math.random() * shapeArray.length)]
             }
-
+            shapeString = styles[`${localShape}`]
+            blankString = styles[`${localShape}_blank`]
+            colorString = styles[`${localShape}_${d}`]
+            
             if (d === currentColor) {
               return (
                 <div
@@ -135,10 +131,10 @@ export default function App() {
         </div>
         <select className={`${styles.Shape} ${styles.Shape_value}`}
           onChange={(e) => handleShapeChange(e)}>
-            {shapeArray.map((s) => {
-              return <option className={`${styles.Shape} ${styles.Shape_value}`} value={s}>{s}</option>
-            })}
-            <option className={`${styles.Shape} ${styles.Shape_value}`} value="Random">Random</option>
+          {shapeArray.map((s) => {
+            return <option className={`${styles.Shape} ${styles.Shape_value}`} value={s}>{s}</option>
+          })}
+          <option className={`${styles.Shape} ${styles.Shape_value}`} value="Random">Random</option>
         </select>
       </div>
     </div>
