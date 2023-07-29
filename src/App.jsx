@@ -19,8 +19,8 @@ export default function App() {
   // Store the current selected mode and current color
   const [mode, setMode] = useState("Random");
   const [currentColor, setCurrentColor] = useState(undefined);
-  const [shape, setShape] = useState("Random")
   const [shapeArray, setShapeArray] = useState(["Circle", "Triangle"])
+  const [shape, setShape] = useState(shapeArray[0] || "Circle")
 
   // Create an array of the color choices from the exported
   // color list of the .scss file. String replace won't work on the input
@@ -89,7 +89,7 @@ export default function App() {
             shapeString = styles[`${localShape}`]
             blankString = styles[`${localShape}_blank`]
             colorString = styles[`${localShape}_${d}`]
-            
+
             if (d === currentColor) {
               return (
                 <div
