@@ -95,7 +95,7 @@ body {
 // are added, refresh the page for them to appear
 $colors:red,yellow,green;
 @each $color in $colors {
-  .Circle_#{$color} {
+  .Circle_#{""+ $color} {
     background: $color;
   }
 }

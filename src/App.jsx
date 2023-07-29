@@ -71,7 +71,7 @@ export default function App() {
               return (
                 <div
                   key={d}
-                  className={`${styles.Circle} _src_styles_module__Circle_${d}`}
+                  className={`${styles.Circle} ${styles[`Circle_${d}`]}`}
                 />
               );
             } else {
