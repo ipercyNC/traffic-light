@@ -16,7 +16,12 @@ export default function fetchLight(mode, colorChoices, currentColor) {
       let idx = -1;
       if (mode === "Random") {
         // If Random, return random index
+        let currentIdx = colorChoices.indexOf(currentColor);
         idx = Math.floor(Math.random() * colorChoices.length);
+        while (idx === currentIdx) {
+          idx = Math.floor(Math.random() * colorChoices.length);
+        }
+        
       } else {
         // If In Order, then get the next appropriate index (decreasing index due
         // to green, yellow, red, repeat)
